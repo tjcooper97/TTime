@@ -1,6 +1,6 @@
 #ifndef TTIME_H
 #define TTIME_H
-  #include "Arduino.h"
+  #include <Arduino.h>
   #include <TSoftwareVersion.h>
     #define TTIME_V_MAJOR 1
     #define TTIME_V_MINOR 4
