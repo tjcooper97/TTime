@@ -99,7 +99,7 @@
   uint8_t   getDayOfWeek(uint16_t year, uint8_t mon, uint8_t day);
   uint8_t   getSeason(uint8_t mon, uint8_t day);
   bool      isDST(uint8_t mon, uint8_t day, uint8_t dow);
-  bool      isValidDate(uint16_t year, uint8_t mon, uint8_t day); // Only allows 1/1/2000 - 12/31/2099
+  bool      isValidDate(uint16_t year, uint8_t mon, uint8_t day);
   bool      isValidTime(uint8_t hour, uint8_t min, uint8_t sec);
   inline uint16_t getSunEventMinutes(uint16_t year, uint8_t mon, uint8_t day, SunEventRegion region, bool returnsunrise);
   uint16_t  getSunriseMinutes(uint16_t year, uint8_t mon, uint8_t day, SunEventRegion region);

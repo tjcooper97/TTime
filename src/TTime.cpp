@@ -330,7 +330,7 @@ bool isDST(uint8_t mon, uint8_t day, uint8_t dow) {
   return false;
 }
 
-bool isValidDate(uint16_t year, uint8_t mon, uint8_t day) { return ((year > 1999 && year < 2100) && (mon > 0 && mon < 13) && (day > 0 && day <= getDaysInMonth(mon,year))); }
+bool isValidDate(uint16_t year, uint8_t mon, uint8_t day) { return ((year >= TTIME_FIRST_YEAR && year <= TTIME_LAST_YEAR) && (mon > 0 && mon < 13) && (day > 0 && day <= getDaysInMonth(mon,year))); }
 bool isValidTime(uint8_t  hour, uint8_t min, uint8_t sec) { return (hour < 24 && min < 60 && sec < 60); }
 
 inline uint16_t getSunEventMinutes(uint16_t year, uint8_t mon, uint8_t day, SunEventRegion region, bool returnsunrise) {
