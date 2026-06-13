@@ -3,8 +3,8 @@
   #include <Arduino.h>
   #include <TSoftwareVersion.h>
     #define TTIME_V_MAJOR 1
-    #define TTIME_V_MINOR 4
-    #define TTIME_V_PATCH 1
+    #define TTIME_V_MINOR 5
+    #define TTIME_V_PATCH 0
     extern const TSoftwareVersion TTime_Version;
 
 
