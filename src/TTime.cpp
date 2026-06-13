@@ -330,7 +330,7 @@ bool isDST(uint8_t mon, uint8_t day, uint8_t dow) {
   return false;
 }
 
-bool isValidDate(uint16_t year, uint8_t mon, uint8_t day) { return ((year >= TTIME_FIRST_YEAR && year <= TTIME_LAST_YEAR) && (mon > 0 && mon < 13) && (day > 0 && day <= getDaysInMonth(mon,year))); }
+bool isValidDate(uint16_t year, uint8_t mon, uint8_t day) { return ((year >= TTIME_FIRST_YEAR && year <= TTIME_LAST_YEAR) && (mon >= JANUARY && mon <= DECEMBER) && (day > 0 && day <= getDaysInMonth(mon,year))); }
 bool isValidTime(uint8_t  hour, uint8_t min, uint8_t sec) { return (hour < 24 && min < 60 && sec < 60); }
 
 inline uint16_t getSunEventMinutes(uint16_t year, uint8_t mon, uint8_t day, SunEventRegion region, bool returnsunrise) {
@@ -446,25 +446,19 @@ bool     TTime::isDST()         { return ::isDST(_mon,_day,TTime::getDayOfWeek()
 uint8_t  TTime::getMoonPhase()  { return ::getMoonPhase(TTime::getJulianDate()); }
 
 
-bool TTime::setDate(uint16_t year, uint8_t mon, uint8_t day) { 
-  if (year < TTIME_FIRST_YEAR || year > TTIME_LAST_YEAR) { return false; };
-  if (mon  < JANUARY || mon > DECEMBER)                  { return false; };
-  if (day  < 1 || day > ::getDaysInMonth(mon, year))     { return false; }; 
-  
-  _year = year; 
-  _mon  = mon; 
-  _day  = day;
-  
-  return true; 
+bool TTime::setDate(uint16_t year, uint8_t mon, uint8_t day) {
+  if (!::isValidDate(year,mon,day)) { return false; };
+    _year = year;
+    _mon  = mon;
+    _day  = day;
+  return true;
 }
 
-bool TTime::setTime(uint8_t hour, uint8_t min, uint8_t sec) { 
-  if (hour > 23 || min > 59 || sec > 59) { return false; };
-  
-  _hour = hour; 
-  _min  = min; 
-  _sec  = sec;
-
+bool TTime::setTime(uint8_t hour, uint8_t min, uint8_t sec) {
+  if (!::isValidTime(hour,min,sec)) { return false; };
+    _hour = hour;
+    _min  = min;
+    _sec  = sec;
   return true;
 }
 
